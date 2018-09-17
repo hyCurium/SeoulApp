@@ -11,4 +11,14 @@
         익숙한 단어였습니다. "서울밤도깨비야시장"은 밤이면 열렸다가 아침이면 사라지는 도깨비 같은 시장이라는
         의미로 특정한 시간이 되면 새로운 공간, 새로운 장이 열린다는 콘셉트를 가지고 있습니다.
     </string>
+    <string-array name="category_kor">
+        <item>문화재</item>
+        <item>볼거리</item>
+        <item>한류</item>
+    </string-array>
+    <string-array name="category_eng">
+        <item>문화재</item>
+        <item>볼거리</item>
+        <item>한류</item>
+    </string-array>
 </resources>

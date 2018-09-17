@@ -21,14 +21,36 @@ import com.example.jungeb.seoulapp.fragment.TourFragment;
 
 public class DetailPageActivity extends AppCompatActivity {
 
-    ImageButton imbDetailBack;
+    ImageButton imbDetailBack,detailbookmark;
     ViewPager vpDetailImages;
     PagerDetailAdapter pagerDetailAdapter;
-
+    boolean isBookMark;
+    int m_id;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_detail_page);
+
+        Intent intent = getIntent();
+        m_id = intent.getIntExtra("ID",0);
+        String placeID = intent.getStringExtra("PlaceID");
+        int category = intent.getIntExtra("Category",1) - 1;
+        isBookMark = intent.getBooleanExtra("BookMakr",false);
+
+
+        detailbookmark = (ImageButton)findViewById(R.id.detailbookmark);
+
+        if (isBookMark)
+        {
+            detailbookmark.setImageResource(R.drawable.bookmark_activation);
+        }
+
+        detailbookmark.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+
+            }
+        });
 
         //뒤로가기 버튼 눌렀을 때
         imbDetailBack = (ImageButton) findViewById(R.id.imbDetailBack);
