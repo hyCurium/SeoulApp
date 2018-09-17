@@ -1,0 +1,82 @@
+<?xml version="1.0" encoding="utf-8"?>
+<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="100dp"
+    tools:context=".fragment.TomorrowWeatherFragment">
+
+    <ImageView
+        android:layout_width="100dp"
+        android:layout_height="80dp"
+        android:layout_marginLeft="25dp"
+        android:layout_marginTop="10dp"
+        android:src="@drawable/rectangle_gray"/>
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="32"
+        android:textSize="70dp"
+        android:textColor="#000"
+        android:layout_marginLeft="135dp"/>
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="흐림"
+        android:textColor="#383838"
+        android:textSize="18dp"
+        android:layout_marginLeft="225dp"
+        android:layout_marginTop="50dp"/>
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="34.5"
+        android:textColor="#9d9d9d"
+        android:textSize="15dp"
+        android:layout_marginLeft="225dp"
+        android:layout_marginTop="30dp"/>
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="/"
+        android:textColor="#9d9d9d"
+        android:textSize="15dp"
+        android:layout_marginLeft="260dp"
+        android:layout_marginTop="30dp"/>
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="20.3"
+        android:textColor="#9d9d9d"
+        android:textSize="15dp"
+        android:layout_marginLeft="270dp"
+        android:layout_marginTop="30dp"/>
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="내일날씨"
+        android:textColor="#383838"
+        android:textSize="15dp"
+        android:layout_marginLeft="320dp"
+        android:layout_marginTop="8dp"/>
+
+    <ImageView
+        android:layout_width="7dp"
+        android:layout_height="7dp"
+        android:src="@drawable/circle_purple"
+        android:layout_marginRight="5dp"
+        android:layout_gravity="center_horizontal|bottom"/>
+
+    <ImageView
+        android:layout_width="7dp"
+        android:layout_height="7dp"
+        android:src="@drawable/circle_gray"
+        android:layout_marginLeft="5dp"
+        android:layout_gravity="center_horizontal|bottom"/>
+
+</FrameLayout>

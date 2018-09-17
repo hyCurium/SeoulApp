@@ -1,0 +1,236 @@
+<?xml version="1.0" encoding="utf-8"?>
+<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="#fff"
+    tools:context=".fragment.TourFragment">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:orientation="vertical">
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="0dp"
+                android:layout_weight="4.5"
+                android:orientation="vertical">
+
+                <LinearLayout
+                    android:id="@+id/linearFoldTab"
+                    android:layout_width="match_parent"
+                    android:layout_height="0dp"
+                    android:layout_weight="3"
+                    android:orientation="vertical"
+                    android:background="@drawable/rectangle_stamp_bg"
+                    android:elevation="4dp"
+                    android:layout_margin="10dp">
+
+                    <LinearLayout
+                        android:paddingTop="5dp"
+                        android:layout_width="match_parent"
+                        android:layout_height="0dp"
+                        android:layout_weight="0.8"
+                        android:visibility="visible">
+
+                        <android.support.v4.view.ViewPager
+                            android:id="@+id/vpWeather"
+                            android:layout_width="match_parent"
+                            android:layout_height="match_parent">
+
+                        </android.support.v4.view.ViewPager>
+
+                    </LinearLayout>
+
+                    <LinearLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="0dp"
+                        android:layout_weight="1"
+                        android:visibility="visible">
+
+                        <FrameLayout
+                            android:layout_width="match_parent"
+                            android:layout_height="match_parent">
+
+                            <TextView
+                                android:layout_width="match_parent"
+                                android:layout_height="21dp"
+                                android:text="나의 여행기록"
+                                android:textColor="#000"
+                                android:textStyle="bold"
+                                android:textSize="18dp"
+                                android:layout_marginLeft="20dp"
+                                android:layout_marginTop="10dp"/>
+
+                            <Button
+                                android:id="@+id/btnTravelMore"
+                                android:layout_width="match_parent"
+                                android:layout_height="match_parent"
+                                android:layout_gravity="right|bottom"
+                                android:background="#0fff"/>
+
+                            <ImageView
+                                android:layout_width="70dp"
+                                android:layout_height="70dp"
+                                android:layout_gravity="center_vertical"
+                                android:layout_marginTop="20dp"
+                                android:layout_marginLeft="20dp"
+                                android:src="@drawable/rectangle_gray"
+                                android:background="#0fff"/>
+
+                            <ImageView
+                                android:layout_width="70dp"
+                                android:layout_height="70dp"
+                                android:layout_gravity="center_vertical"
+                                android:layout_marginTop="20dp"
+                                android:layout_marginLeft="100dp"
+                                android:src="@drawable/rectangle_gray"
+                                android:background="#0fff"/>
+
+                            <ImageView
+                                android:layout_width="70dp"
+                                android:layout_height="70dp"
+                                android:layout_gravity="center_vertical"
+                                android:layout_marginTop="20dp"
+                                android:layout_marginLeft="180dp"
+                                android:src="@drawable/rectangle_gray"
+                                android:background="#0fff"/>
+
+                        </FrameLayout>
+
+                    </LinearLayout>
+
+                    <LinearLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="0dp"
+                        android:layout_weight="0.3"
+                        android:visibility="visible">
+
+                        <Button
+                            android:id="@+id/btnFold"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:gravity="center"
+                            android:text="접기"
+                            android:background="#0fff"/>
+
+                    </LinearLayout>
+
+                </LinearLayout>
+
+                <LinearLayout
+                    android:id="@+id/linearFoldTab2"
+                    android:layout_width="match_parent"
+                    android:layout_height="0dp"
+                    android:layout_weight="0.3"
+                    android:orientation="vertical"
+                    android:visibility="gone"
+                    android:background="@drawable/rectangle_stamp_bg"
+                    android:elevation="4dp"
+                    android:layout_margin="10dp">
+
+                    <LinearLayout
+                        android:id="@+id/linearUnfold"
+                        android:layout_width="match_parent"
+                        android:layout_height="match_parent">
+
+                        <TextView
+                            android:layout_width="wrap_content"
+                            android:layout_height="match_parent"
+                            android:text="오늘날씨"
+                            android:textColor="#000"
+                            android:textSize="17dp"
+                            android:gravity="center"
+                            android:layout_marginLeft="15dp" />
+
+                        <TextView
+                            android:layout_width="wrap_content"
+                            android:layout_height="match_parent"
+                            android:text="맑음"
+                            android:textColor="#5d38db"
+                            android:textSize="17dp"
+                            android:textStyle="bold"
+                            android:gravity="center"
+                            android:layout_marginLeft="10dp" />
+
+                        <TextView
+                            android:layout_width="wrap_content"
+                            android:layout_height="match_parent"
+                            android:text="32"
+                            android:textColor="#000"
+                            android:textSize="17dp"
+                            android:gravity="center"
+                            android:textStyle="bold"
+                            android:layout_marginLeft="145dp" />
+
+                        <TextView
+                            android:layout_width="wrap_content"
+                            android:layout_height="match_parent"
+                            android:text="34.5"
+                            android:textColor="#000"
+                            android:textSize="17dp"
+                            android:gravity="center"
+                            android:layout_marginLeft="10dp" />
+
+                        <TextView
+                            android:layout_width="wrap_content"
+                            android:layout_height="match_parent"
+                            android:text="/"
+                            android:textColor="#000"
+                            android:textSize="17dp"
+                            android:gravity="center"
+                            android:layout_marginLeft="5dp" />
+
+                        <TextView
+                            android:layout_width="wrap_content"
+                            android:layout_height="match_parent"
+                            android:text="20.3"
+                            android:textColor="#000"
+                            android:textSize="17dp"
+                            android:gravity="center"
+                            android:layout_marginLeft="5dp" />
+
+
+                    </LinearLayout>
+
+                </LinearLayout>
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="0dp"
+                    android:layout_weight="3.2"
+                    android:orientation="vertical">
+
+                    <LinearLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="50dp">
+
+                        <android.support.design.widget.TabLayout
+                            android:id="@+id/tabTourInfo"
+                            android:layout_width="match_parent"
+                            android:layout_height="match_parent">
+                        </android.support.design.widget.TabLayout>
+
+                    </LinearLayout>
+
+                    <LinearLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="0dp"
+                        android:layout_weight="6">
+
+                        <android.support.v4.view.ViewPager
+                            android:id="@+id/vpTourInfo"
+                            android:layout_width="match_parent"
+                            android:layout_height="match_parent">
+                        </android.support.v4.view.ViewPager>
+
+                    </LinearLayout>
+
+                </LinearLayout>
+
+            </LinearLayout>
+
+        </LinearLayout>
+
+</FrameLayout>
