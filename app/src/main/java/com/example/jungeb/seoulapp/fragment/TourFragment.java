@@ -16,6 +16,8 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Button;
+import android.widget.ImageButton;
+import android.widget.ImageView;
 import android.widget.LinearLayout;
 import android.widget.TextView;
 
@@ -24,7 +26,8 @@ import com.example.jungeb.seoulapp.TravelActivity;
 
 public class TourFragment extends Fragment implements View.OnClickListener{
 
-    Button btnTravelMore, btnFold;
+    Button btnTravelMore;
+    ImageButton imbFold;
     ViewPager vpWeather, vpTourInfo;
     TabLayout tabTourInfo;
     PagerTabAdapter pagerTabAdapter;
@@ -39,13 +42,14 @@ public class TourFragment extends Fragment implements View.OnClickListener{
 
         context = container.getContext();
 
+
         //접기
-        btnFold = (Button) view.findViewById(R.id.btnFold);
+        imbFold = (ImageButton) view.findViewById(R.id.imbFold);
         linearUnFold = (LinearLayout)view.findViewById(R.id.linearUnfold);
         linearFoldTab = (LinearLayout) view.findViewById(R.id.linearFoldTab);
         linearFoldTab2 = (LinearLayout) view.findViewById(R.id.linearFoldTab2);
 
-        btnFold.setOnClickListener(foldListener);
+        imbFold.setOnClickListener(foldListener);
         linearUnFold.setOnClickListener(foldListener);
 
 
@@ -60,6 +64,7 @@ public class TourFragment extends Fragment implements View.OnClickListener{
             }
         });
 
+
         //날씨 뷰페이저
         vpWeather = (ViewPager) view.findViewById(R.id.vpWeather);
 
@@ -67,7 +72,8 @@ public class TourFragment extends Fragment implements View.OnClickListener{
         vpWeather.setAdapter(pagerWeatherAdapter);
         vpWeather.setCurrentItem(0);
 
-        //관광정보 탭
+
+        //관광정보 탭 레이아웃
         tabTourInfo = (TabLayout) view.findViewById(R.id.tabTourInfo);
         vpTourInfo = (ViewPager) view.findViewById(R.id.vpTourInfo);
 
@@ -97,7 +103,7 @@ public class TourFragment extends Fragment implements View.OnClickListener{
         kpop.setGravity(Gravity.CENTER);
         festival.setGravity(Gravity.CENTER);
 
-        bookmark.setTextColor(Color.parseColor("#5d38db"));
+        bookmark.setTextColor(Color.parseColor("#4170f2"));
         culture.setTextColor(Color.parseColor("#929292"));
         kpop.setTextColor(Color.parseColor("#929292"));
         festival.setTextColor(Color.parseColor("#929292"));
@@ -114,7 +120,7 @@ public class TourFragment extends Fragment implements View.OnClickListener{
                 switch(pos) {
                     case 0:
                         TextView tvBookmark0 = (TextView)tab.getCustomView();
-                        tvBookmark0.setTextColor(Color.parseColor("#5d38db"));
+                        tvBookmark0.setTextColor(Color.parseColor("#4170f2"));
 
                         TextView tvCulture0 = (TextView)tabTourInfo.getTabAt(1).getCustomView();
                         tvCulture0.setTextColor(Color.parseColor("#929292"));
@@ -128,7 +134,7 @@ public class TourFragment extends Fragment implements View.OnClickListener{
                         break;
                     case 1:
                         TextView tvBookmark1 = (TextView)tab.getCustomView();
-                        tvBookmark1.setTextColor(Color.parseColor("#5d38db"));
+                        tvBookmark1.setTextColor(Color.parseColor("#4170f2"));
 
                         TextView tvCulture1 = (TextView)tabTourInfo.getTabAt(0).getCustomView();
                         tvCulture1.setTextColor(Color.parseColor("#929292"));
@@ -142,7 +148,7 @@ public class TourFragment extends Fragment implements View.OnClickListener{
                         break;
                     case 2:
                         TextView tvBookmark2 = (TextView)tab.getCustomView();
-                        tvBookmark2.setTextColor(Color.parseColor("#5d38db"));
+                        tvBookmark2.setTextColor(Color.parseColor("#4170f2"));
 
                         TextView tvCulture2 = (TextView)tabTourInfo.getTabAt(0).getCustomView();
                         tvCulture2.setTextColor(Color.parseColor("#929292"));
@@ -156,7 +162,7 @@ public class TourFragment extends Fragment implements View.OnClickListener{
                         break;
                     case 3:
                         TextView tvBookmark3 = (TextView)tab.getCustomView();
-                        tvBookmark3.setTextColor(Color.parseColor("#5d38db"));
+                        tvBookmark3.setTextColor(Color.parseColor("#4170f2"));
 
                         TextView tvCulture3 = (TextView)tabTourInfo.getTabAt(0).getCustomView();
                         tvCulture3.setTextColor(Color.parseColor("#929292"));
@@ -193,6 +199,7 @@ public class TourFragment extends Fragment implements View.OnClickListener{
 
     }
 
+    //접기, 펼치기 리스너
     View.OnClickListener foldListener = new View.OnClickListener()
     {
         @Override
@@ -200,7 +207,7 @@ public class TourFragment extends Fragment implements View.OnClickListener{
         {
             switch (v.getId())
             {
-                case R.id.btnFold:
+                case R.id.imbFold:
                     linearFoldTab.setVisibility(linearFoldTab.getVisibility() == View.VISIBLE?View.GONE:View.VISIBLE);
                     linearFoldTab2.setVisibility(linearFoldTab2.getVisibility() == View.VISIBLE?View.GONE:View.VISIBLE);
                     break;
@@ -212,6 +219,7 @@ public class TourFragment extends Fragment implements View.OnClickListener{
         }
     };
 
+    //날씨 뷰페이저 어댑터
     private class PagerWeatherAdapter extends FragmentStatePagerAdapter
     {
         public PagerWeatherAdapter(FragmentManager fragmentManager)
@@ -244,6 +252,7 @@ public class TourFragment extends Fragment implements View.OnClickListener{
     }
 
 
+    //탭 뷰페이저 어댑터
     private class PagerTabAdapter extends FragmentStatePagerAdapter
     {
         public PagerTabAdapter(FragmentManager fragmentManager)

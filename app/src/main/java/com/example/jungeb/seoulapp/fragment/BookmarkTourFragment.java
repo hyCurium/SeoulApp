@@ -1,21 +1,25 @@
 package com.example.jungeb.seoulapp.fragment;
 
 import android.content.Context;
+import android.content.Intent;
 import android.net.Uri;
 import android.os.Bundle;
+import android.os.LocaleList;
 import android.support.annotation.NonNull;
 import android.support.annotation.Nullable;
 import android.support.v4.app.Fragment;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.AdapterView;
 import android.widget.ListView;
 
+import com.example.jungeb.seoulapp.DetailPageActivity;
 import com.example.jungeb.seoulapp.R;
 import com.example.jungeb.seoulapp.adapter.ListviewBookmarkAdapter;
 
 
-public class BookmarkTourFragment extends Fragment {
+public class BookmarkTourFragment extends Fragment implements View.OnClickListener{
 
     ListView lvBookmark;
 
@@ -27,7 +31,7 @@ public class BookmarkTourFragment extends Fragment {
         //커스텀 리스트뷰 확인용
         lvBookmark = (ListView)view.findViewById(R.id.lvBookmark);
 
-        ListviewBookmarkAdapter listviewBookmarkAdapter = new ListviewBookmarkAdapter();
+        final ListviewBookmarkAdapter listviewBookmarkAdapter = new ListviewBookmarkAdapter();
         lvBookmark.setAdapter(listviewBookmarkAdapter);
 
         for (int i=1; i<11; i++) {
@@ -35,5 +39,10 @@ public class BookmarkTourFragment extends Fragment {
         }
 
         return view;
+    }
+
+    @Override
+    public void onClick(View v) {
+
     }
 }

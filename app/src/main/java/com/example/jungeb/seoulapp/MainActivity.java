@@ -10,9 +10,6 @@ import android.widget.ImageView;
 import android.widget.LinearLayout;
 import android.widget.TextView;
 
-import com.example.jungeb.seoulapp.fragment.FacilitiesFragment;
-import com.example.jungeb.seoulapp.fragment.TourFragment;
-
 public class MainActivity extends AppCompatActivity implements View.OnClickListener{
 
     LinearLayout linearMainTour, linearMainFacilities;

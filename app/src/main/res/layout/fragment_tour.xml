@@ -3,6 +3,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
     android:background="#fff"
     tools:context=".fragment.TourFragment">
 
@@ -14,7 +15,7 @@
             <LinearLayout
                 android:layout_width="match_parent"
                 android:layout_height="0dp"
-                android:layout_weight="4.5"
+                android:layout_weight="4.4"
                 android:orientation="vertical">
 
                 <LinearLayout
@@ -23,22 +24,21 @@
                     android:layout_height="0dp"
                     android:layout_weight="3"
                     android:orientation="vertical"
-                    android:background="@drawable/rectangle_stamp_bg"
+                    android:background="@drawable/rectangle_tab_bg"
                     android:elevation="4dp"
-                    android:layout_margin="10dp">
+                    android:layout_margin="12dp">
 
                     <LinearLayout
                         android:paddingTop="5dp"
                         android:layout_width="match_parent"
                         android:layout_height="0dp"
-                        android:layout_weight="0.8"
+                        android:layout_weight="0.4"
                         android:visibility="visible">
 
                         <android.support.v4.view.ViewPager
                             android:id="@+id/vpWeather"
                             android:layout_width="match_parent"
                             android:layout_height="match_parent">
-
                         </android.support.v4.view.ViewPager>
 
                     </LinearLayout>
@@ -46,7 +46,28 @@
                     <LinearLayout
                         android:layout_width="match_parent"
                         android:layout_height="0dp"
-                        android:layout_weight="1"
+                        android:layout_weight="0.06"
+                        android:gravity="center"
+                        android:visibility="visible">
+
+                        <ImageView
+                            android:layout_width="7dp"
+                            android:layout_height="7dp"
+                            android:src="@drawable/circle_purple"
+                            android:layout_marginRight="3dp" />
+
+                        <ImageView
+                            android:layout_width="7dp"
+                            android:layout_height="7dp"
+                            android:src="@drawable/circle_gray"
+                            android:layout_marginLeft="3dp" />
+
+                    </LinearLayout>
+
+                    <LinearLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="0dp"
+                        android:layout_weight="0.6"
                         android:visibility="visible">
 
                         <FrameLayout
@@ -55,7 +76,7 @@
 
                             <TextView
                                 android:layout_width="match_parent"
-                                android:layout_height="21dp"
+                                android:layout_height="22dp"
                                 android:text="나의 여행기록"
                                 android:textColor="#000"
                                 android:textStyle="bold"
@@ -71,30 +92,30 @@
                                 android:background="#0fff"/>
 
                             <ImageView
-                                android:layout_width="70dp"
-                                android:layout_height="70dp"
+                                android:layout_width="85dp"
+                                android:layout_height="85dp"
                                 android:layout_gravity="center_vertical"
-                                android:layout_marginTop="20dp"
+                                android:layout_marginTop="15dp"
                                 android:layout_marginLeft="20dp"
-                                android:src="@drawable/rectangle_gray"
+                                android:src="@drawable/rectangle_stamp_bg"
                                 android:background="#0fff"/>
 
                             <ImageView
-                                android:layout_width="70dp"
-                                android:layout_height="70dp"
+                                android:layout_width="85dp"
+                                android:layout_height="85dp"
                                 android:layout_gravity="center_vertical"
-                                android:layout_marginTop="20dp"
-                                android:layout_marginLeft="100dp"
-                                android:src="@drawable/rectangle_gray"
+                                android:layout_marginTop="15dp"
+                                android:layout_marginLeft="115dp"
+                                android:src="@drawable/rectangle_stamp_bg"
                                 android:background="#0fff"/>
 
                             <ImageView
-                                android:layout_width="70dp"
-                                android:layout_height="70dp"
+                                android:layout_width="85dp"
+                                android:layout_height="85dp"
                                 android:layout_gravity="center_vertical"
-                                android:layout_marginTop="20dp"
-                                android:layout_marginLeft="180dp"
-                                android:src="@drawable/rectangle_gray"
+                                android:layout_marginTop="15dp"
+                                android:layout_marginLeft="210dp"
+                                android:src="@drawable/rectangle_stamp_bg"
                                 android:background="#0fff"/>
 
                         </FrameLayout>
@@ -104,16 +125,15 @@
                     <LinearLayout
                         android:layout_width="match_parent"
                         android:layout_height="0dp"
-                        android:layout_weight="0.3"
+                        android:layout_weight="0.2"
+                        android:gravity="center"
                         android:visibility="visible">
 
-                        <Button
-                            android:id="@+id/btnFold"
-                            android:layout_width="match_parent"
-                            android:layout_height="wrap_content"
-                            android:gravity="center"
-                            android:text="접기"
-                            android:background="#0fff"/>
+                        <ImageButton
+                            android:id="@+id/imbFold"
+                            android:layout_width="25dp"
+                            android:layout_height="15dp"
+                            android:background="@drawable/folding"/>
 
                     </LinearLayout>
 
@@ -126,7 +146,7 @@
                     android:layout_weight="0.3"
                     android:orientation="vertical"
                     android:visibility="gone"
-                    android:background="@drawable/rectangle_stamp_bg"
+                    android:background="@drawable/rectangle_tab_bg"
                     android:elevation="4dp"
                     android:layout_margin="10dp">
 
@@ -148,7 +168,7 @@
                             android:layout_width="wrap_content"
                             android:layout_height="match_parent"
                             android:text="맑음"
-                            android:textColor="#5d38db"
+                            android:textColor="#4170f2"
                             android:textSize="17dp"
                             android:textStyle="bold"
                             android:gravity="center"
@@ -162,7 +182,7 @@
                             android:textSize="17dp"
                             android:gravity="center"
                             android:textStyle="bold"
-                            android:layout_marginLeft="145dp" />
+                            android:layout_marginLeft="140dp" />
 
                         <TextView
                             android:layout_width="wrap_content"
@@ -209,7 +229,10 @@
                         <android.support.design.widget.TabLayout
                             android:id="@+id/tabTourInfo"
                             android:layout_width="match_parent"
-                            android:layout_height="match_parent">
+                            android:layout_height="match_parent"
+                            android:layout_marginRight="12dp"
+                            android:layout_marginLeft="12dp"
+                            app:tabIndicatorColor="#4170f2">
                         </android.support.design.widget.TabLayout>
 
                     </LinearLayout>

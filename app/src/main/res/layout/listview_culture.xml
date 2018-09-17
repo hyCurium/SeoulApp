@@ -20,7 +20,7 @@
                 android:id="@+id/ivCultureImage"
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
-                android:src="@drawable/rectangle_gray"/>
+                android:src="@drawable/rectangle_listview"/>
 
         </LinearLayout>
 
@@ -29,6 +29,7 @@
             android:layout_height="match_parent"
             android:layout_weight="2.2"
             android:padding="5dp"
+            android:layout_marginLeft="3dp"
             android:orientation="vertical">
 
             <TextView
@@ -61,10 +62,12 @@
             android:layout_height="match_parent"
             android:layout_weight="0.4">
 
-            <Button
-                android:layout_width="match_parent"
-                android:layout_height="match_parent"
-                android:text="북마크"/>
+            <ImageButton
+                android:layout_width="20dp"
+                android:layout_height="30dp"
+                android:scaleType="fitCenter"
+                android:src="@drawable/bookmark_disable"
+                android:background="#0fff"/>
         </LinearLayout>
     </LinearLayout>
 

@@ -40,10 +40,8 @@
                     <ImageButton
                         android:layout_width="55dp"
                         android:layout_height="55dp"
-                        android:src="@drawable/subway_activation"
-                        android:scaleType="fitCenter"
-                        android:background="#0fff"
-                        android:id="@+id/ibtnSubwayIcon"/>
+                        android:src="@drawable/circle_purple"
+                        android:background="#0fff"/>
 
                     <TextView
                         android:layout_width="match_parent"
@@ -52,8 +50,7 @@
                         android:text="지하철"
                         android:textSize="12dp"
                         android:textColor="#5d38db"
-                        android:gravity="center"
-                        android:id="@+id/tvSubwayText"/>
+                        android:gravity="center"/>
 
                 </LinearLayout>
 
@@ -67,10 +64,8 @@
                     <ImageButton
                         android:layout_width="55dp"
                         android:layout_height="55dp"
-                        android:src="@drawable/bus_disable"
-                        android:scaleType="fitCenter"
-                        android:background="#0fff"
-                        android:id="@+id/ibtnBusIcon"/>
+                        android:src="@drawable/circle_gray"
+                        android:background="#0fff"/>
 
                     <TextView
                         android:layout_width="match_parent"
@@ -79,8 +74,7 @@
                         android:text="버스"
                         android:textSize="12dp"
                         android:textColor="#929292"
-                        android:gravity="center"
-                        android:id="@+id/tvBusText"/>
+                        android:gravity="center"/>
 
                 </LinearLayout>
 
@@ -94,10 +88,8 @@
                     <ImageButton
                         android:layout_width="55dp"
                         android:layout_height="55dp"
-                        android:src="@drawable/taxi_disable"
-                        android:scaleType="fitCenter"
-                        android:background="#0fff"
-                        android:id="@+id/ibtnTaxiIcon"/>
+                        android:src="@drawable/circle_gray"
+                        android:background="#0fff"/>
 
                     <TextView
                         android:layout_width="match_parent"
@@ -106,8 +98,7 @@
                         android:text="택시정류장"
                         android:textSize="12dp"
                         android:textColor="#929292"
-                        android:gravity="center"
-                        android:id="@+id/tvTaxiText"/>
+                        android:gravity="center"/>
 
                 </LinearLayout>
 
@@ -121,10 +112,8 @@
                     <ImageButton
                         android:layout_width="55dp"
                         android:layout_height="55dp"
-                        android:src="@drawable/medicine_disable"
-                        android:scaleType="fitCenter"
-                        android:background="#0fff"
-                        android:id="@+id/ibtnMedicineIcon"/>
+                        android:src="@drawable/circle_gray"
+                        android:background="#0fff"/>
 
                     <TextView
                         android:layout_width="match_parent"
@@ -133,8 +122,7 @@
                         android:text="약국"
                         android:textSize="12dp"
                         android:textColor="#929292"
-                        android:gravity="center"
-                        android:id="@+id/tvMedicineText"/>
+                        android:gravity="center"/>
 
                 </LinearLayout>
 
@@ -148,10 +136,8 @@
                     <ImageButton
                         android:layout_width="55dp"
                         android:layout_height="55dp"
-                        android:src="@drawable/wc_disable"
-                        android:scaleType="fitCenter"
-                        android:background="#0fff"
-                        android:id="@+id/ibtnWCIcon"/>
+                        android:src="@drawable/circle_gray"
+                        android:background="#0fff"/>
 
                     <TextView
                         android:layout_width="match_parent"
@@ -160,8 +146,7 @@
                         android:text="공중화장실"
                         android:textSize="12dp"
                         android:textColor="#929292"
-                        android:gravity="center"
-                        android:id="@+id/tvWCIcon"/>
+                        android:gravity="center"/>
 
                 </LinearLayout>
 
@@ -179,13 +164,10 @@
                 android:layout_height="0dp"
                 android:layout_weight="6">
 
-                <LinearLayout
+                <ImageView
                     android:layout_width="match_parent"
                     android:layout_height="match_parent"
-                    android:id="@+id/linMapView">
-
-
-                </LinearLayout>
+                    android:src="@drawable/rectangle_gray"/>
 
             </LinearLayout>
 

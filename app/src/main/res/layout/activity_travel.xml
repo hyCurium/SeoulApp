@@ -4,6 +4,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:background="#fff"
     tools:context=".TravelActivity">
 
     <LinearLayout
@@ -30,13 +31,15 @@
                     android:textStyle="bold"
                     android:gravity="center" />
 
-                <Button
-                    android:id="@+id/btnTravelBack"
-                    android:layout_width="50dp"
-                    android:layout_height="match_parent"
-                    android:text="뒤로"
-                    android:textSize="14dp"
-                    android:background="#0fff"/>
+                <ImageButton
+                    android:id="@+id/imbTravelBack"
+                    android:layout_width="12dp"
+                    android:layout_height="30dp"
+                    android:layout_gravity="center_vertical"
+                    android:layout_marginLeft="12dp"
+                    android:scaleType="fitCenter"
+                    android:background="#0fff"
+                    android:src="@drawable/back" />
 
             </FrameLayout>
 
@@ -45,11 +48,16 @@
         <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="0dp"
-            android:layout_weight="5">
+            android:layout_weight="5"
+            android:layout_marginLeft="12dp"
+            android:layout_marginRight="12dp">
 
             <ListView
+                android:id="@+id/lvTravel"
                 android:layout_width="match_parent"
-                android:layout_height="match_parent">
+                android:layout_height="match_parent"
+                android:divider="#fff"
+                android:dividerHeight="5dp">
 
             </ListView>
 

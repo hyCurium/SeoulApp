@@ -12,7 +12,10 @@
         android:layout_height="match_parent"
         android:divider="#fff"
         android:dividerHeight="11dp"
-        android:layout_margin="8dp">
+        android:layout_marginTop="8dp"
+        android:layout_marginBottom="8dp"
+        android:layout_marginLeft="12dp"
+        android:layout_marginRight="12dp">
     </ListView>
 
 </FrameLayout>
