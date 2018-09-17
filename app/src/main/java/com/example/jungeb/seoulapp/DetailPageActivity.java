@@ -9,6 +9,7 @@ import android.support.v4.app.FragmentStatePagerAdapter;
 import android.support.v4.view.ViewPager;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
+import android.util.JsonReader;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Button;
@@ -29,6 +30,10 @@ import com.google.android.gms.maps.OnMapReadyCallback;
 import com.google.android.gms.maps.SupportMapFragment;
 import com.google.android.gms.maps.model.LatLng;
 import com.google.android.gms.maps.model.MarkerOptions;
+
+import org.json.JSONException;
+import org.json.JSONObject;
+import org.json.JSONTokener;
 
 import java.net.URL;
 
@@ -148,7 +153,7 @@ public class DetailPageActivity extends AppCompatActivity implements OnMapReadyC
     }
     private class GooglePlaceRequest extends AsyncTask<Void,Void,String>
     {
-        final String API = "AIzaSyCPTLx6d68pfcCVhuESofbwDvSkoWWhE";
+        final String API = "AIzaSyBNcrLP0WNGsICB3aUy7Up9g5yC3f-XX38";
         private String REQUEST_GOOGLEPLACE = "https://maps.googleapis.com/maps/api/place/details/json";
         private URL url;
         private ContentValues values;
@@ -165,7 +170,12 @@ public class DetailPageActivity extends AppCompatActivity implements OnMapReadyC
         protected void onPostExecute(String s) {
             super.onPostExecute(s);
             //JSON 처리
-
+            JSONObject json = null;
+            try {
+                json = new JSONObject(s);
+            } catch (JSONException e) {
+                e.printStackTrace();
+            }
         }
 
         @Override
