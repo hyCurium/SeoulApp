@@ -18,7 +18,7 @@ public class SeoulFacilities {
 
     public SeoulFacilities(HashMap<String,String> location){
         this.location=location;
-        String
+
 
     }
 
