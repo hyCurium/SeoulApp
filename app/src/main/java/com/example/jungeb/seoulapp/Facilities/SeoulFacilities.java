@@ -13,6 +13,8 @@ public class SeoulFacilities {
                                         //문자열, 라인 등을 보다 효율적으로 처리할 수 있도록 해준다.
     HashMap<String,String> location;
     String params="";
+
+
     String data="";
     static final String REQUEST_SEOULTOILET_URL="http://openapi.seoul.go.kr:8088/4d5042734f64616e3235715a787163/json/";
 
