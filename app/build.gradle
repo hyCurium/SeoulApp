@@ -31,4 +31,5 @@ dependencies {
     androidTestImplementation 'com.android.support.test.espresso:espresso-core:3.0.2'
     implementation files('libs/com.skt.Tmap_1.52.jar')
     implementation files('libs/opencsv-4.2.jar')
+    implementation 'com.google.android.gms:play-services-maps:15.0.1'
 }
