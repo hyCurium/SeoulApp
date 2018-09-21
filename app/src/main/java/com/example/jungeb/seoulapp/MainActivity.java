@@ -1,19 +1,30 @@
 package com.example.jungeb.seoulapp;
 
+import android.content.BroadcastReceiver;
+import android.content.Context;
+import android.content.Intent;
+import android.content.IntentFilter;
+import android.content.SharedPreferences;
 import android.graphics.Color;
+import android.location.Location;
 import android.os.Bundle;
+import android.preference.PreferenceManager;
 import android.support.v4.app.FragmentManager;
 import android.support.v4.app.FragmentTransaction;
 import android.support.v7.app.AppCompatActivity;
+import android.util.Log;
 import android.view.View;
 import android.widget.ImageView;
 import android.widget.LinearLayout;
 import android.widget.TextView;
+import android.widget.Toast;
 
+import com.example.jungeb.seoulapp.PushAlarm.PushAlarm;
 import com.example.jungeb.seoulapp.fragment.FacilitiesFragment;
 import com.example.jungeb.seoulapp.fragment.TourFragment;
+import com.example.jungeb.seoulapp.sqliteC.SqliteTour;
 
-public class MainActivity extends AppCompatActivity implements View.OnClickListener{
+public class MainActivity extends AppCompatActivity implements View.OnClickListener {
 
     LinearLayout linearMainTour, linearMainFacilities;
     FragmentManager fragmentManager;
@@ -25,7 +36,23 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
     ImageView ivTourinfoBar, ivFacilitiesBar;
     TextView tvTourinfo, tvFacilities;
 
+    SqliteTour sqlite;
+
+    PushAlarm pushAlarm;
+
+    double Latitude, Longitude;
+
     @Override
+    protected void onResume() {
+        super.onResume();
+        registerReceiver(broadcastReceiver, new IntentFilter(GPSLocation.str_receiver));
+    }
+
+    protected void onPause() {
+        super.onPause();
+        unregisterReceiver(broadcastReceiver);
+    }
+
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
@@ -36,6 +63,7 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
         linearMainTour.setOnClickListener(this);
         linearMainFacilities.setOnClickListener(this);
 
+        sqlite = new SqliteTour(this, "Tour"); //DB 생성
 
         //프래그먼트 객체생성
         tourFragment = new TourFragment();
@@ -54,7 +82,38 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
         ivFacilitiesBar.setImageResource(R.drawable.rectangle_gray);
         tvTourinfo.setTextColor(Color.parseColor("#5d38db"));
         tvFacilities.setTextColor(Color.parseColor("#949494"));
+
+        pushAlarm = new PushAlarm(getApplicationContext());
+
+        Intent intent = new Intent(getApplicationContext(), GPSLocation.class); //GPS 서비스 시작
+        startService(intent);
+
+
     }
+    /*LocationListener locationListener = new LocationListener() {
+        @Override
+        public void onLocationChanged(Location location) {
+            double Latitude, Longitude;
+            Latitude = location.getLatitude();
+            Longitude = location.getLongitude();
+            Toast.makeText(getApplicationContext(), Double.toString(Latitude), Toast.LENGTH_SHORT).show();
+        }
+
+        @Override
+        public void onStatusChanged(String provider, int status, Bundle extras) {
+            Toast.makeText(getApplicationContext(), status, Toast.LENGTH_SHORT).show();
+        }
+
+        @Override
+        public void onProviderEnabled(String provider) {
+            Toast.makeText(getApplicationContext(), "gps 사용 가능", Toast.LENGTH_SHORT).show();
+        }
+
+        @Override
+        public void onProviderDisabled(String provider) {
+            Toast.makeText(getApplicationContext(), "gps 사용 불가", Toast.LENGTH_SHORT).show();
+        }
+    };*/
 
     @Override
     public void onClick(View v) {
@@ -81,7 +140,16 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
 
     }
 
+    private BroadcastReceiver broadcastReceiver = new BroadcastReceiver() {
+        @Override
+        public void onReceive(Context context, Intent intent) {
+            Log.e("MainActivity","Locaiton 수신 완료");
+            Latitude = Double.valueOf(intent.getStringExtra("latutide"));
+            Longitude = Double.valueOf(intent.getStringExtra("longitude"));
 
+            sqlite.CheckVisit(Latitude, Longitude);
+        }
+    };
     //프래그먼트 교체 메소드
     public void setFrag(int i) {
         fragmentManager = getSupportFragmentManager();

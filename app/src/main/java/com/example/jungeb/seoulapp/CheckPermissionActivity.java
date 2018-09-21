@@ -12,7 +12,7 @@ import android.util.Log;
 import android.widget.Toast;
 
 public class CheckPermissionActivity extends AppCompatActivity {
-
+    private static final String PERMISSION_GPS = Manifest.permission.ACCESS_FINE_LOCATION;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -29,14 +29,12 @@ public class CheckPermissionActivity extends AppCompatActivity {
                 .setPositiveButtonName("네")
                 .setNegativeButtonName("아니오")
                 .create()
-                .request(Manifest.permission.ACCESS_FINE_LOCATION, 1000, new PermissionRequester.OnClickDenyButtonListener() {
+                .request( PERMISSION_GPS, 1000, new PermissionRequester.OnClickDenyButtonListener() {
                     @Override
                     public void onClick(Activity activity) {
                         Log.d("xxx", "취소함");
                     }
                 });
-
-
         if (result1 == PermissionRequester.ALREADY_GRANTED) {
             Log.d("RESULT", "권한이 이미 존재함");
             if (ActivityCompat.checkSelfPermission(getApplicationContext(), Manifest.permission.ACCESS_FINE_LOCATION) == PackageManager.PERMISSION_GRANTED) {
