@@ -24,6 +24,9 @@ import com.example.jungeb.seoulapp.fragment.FacilitiesFragment;
 import com.example.jungeb.seoulapp.fragment.TourFragment;
 import com.example.jungeb.seoulapp.sqliteC.SqliteTour;
 
+import java.util.List;
+import java.util.Locale;
+
 public class MainActivity extends AppCompatActivity implements View.OnClickListener {
 
     LinearLayout linearMainTour, linearMainFacilities;
@@ -40,7 +43,11 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
 
     PushAlarm pushAlarm;
 
+    Intent GPSintent;
     double Latitude, Longitude;
+
+    Locale systemLocale;
+    String strLanguage;
 
     @Override
     protected void onResume() {
@@ -48,8 +55,10 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
         registerReceiver(broadcastReceiver, new IntentFilter(GPSLocation.str_receiver));
     }
 
-    protected void onPause() {
-        super.onPause();
+    @Override
+    protected void onDestroy(){
+        super.onDestroy();
+        stopService(GPSintent);
         unregisterReceiver(broadcastReceiver);
     }
 
@@ -85,35 +94,13 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
 
         pushAlarm = new PushAlarm(getApplicationContext());
 
-        Intent intent = new Intent(getApplicationContext(), GPSLocation.class); //GPS 서비스 시작
-        startService(intent);
+        GPSintent = new Intent(getApplicationContext(), GPSLocation.class); //GPS 서비스 시작
+        startService(GPSintent);
 
-
+        systemLocale = getResources().getConfiguration().locale;
+        strLanguage = systemLocale.getLanguage(); //시스템 언어 가져오기
     }
-    /*LocationListener locationListener = new LocationListener() {
-        @Override
-        public void onLocationChanged(Location location) {
-            double Latitude, Longitude;
-            Latitude = location.getLatitude();
-            Longitude = location.getLongitude();
-            Toast.makeText(getApplicationContext(), Double.toString(Latitude), Toast.LENGTH_SHORT).show();
-        }
 
-        @Override
-        public void onStatusChanged(String provider, int status, Bundle extras) {
-            Toast.makeText(getApplicationContext(), status, Toast.LENGTH_SHORT).show();
-        }
-
-        @Override
-        public void onProviderEnabled(String provider) {
-            Toast.makeText(getApplicationContext(), "gps 사용 가능", Toast.LENGTH_SHORT).show();
-        }
-
-        @Override
-        public void onProviderDisabled(String provider) {
-            Toast.makeText(getApplicationContext(), "gps 사용 불가", Toast.LENGTH_SHORT).show();
-        }
-    };*/
 
     @Override
     public void onClick(View v) {
@@ -145,9 +132,13 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
         public void onReceive(Context context, Intent intent) {
             Log.e("MainActivity","Locaiton 수신 완료");
             Latitude = Double.valueOf(intent.getStringExtra("latutide"));
-            Longitude = Double.valueOf(intent.getStringExtra("longitude"));
+            Longitude = Double.valueOf(intent.getStringExtra("longitude")); //GPS 서비스에서 값 가져옴
 
-            sqlite.CheckVisit(Latitude, Longitude);
+            List resultlist = sqlite.CheckVisit(Latitude, Longitude, strLanguage);
+
+            if (!resultlist.isEmpty()){
+                pushAlarm.VisitMessages(getApplicationContext(), strLanguage, resultlist); //관광지 방문시 언어에 따른 알림 출력
+            }
         }
     };
     //프래그먼트 교체 메소드
