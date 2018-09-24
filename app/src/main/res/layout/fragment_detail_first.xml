@@ -9,6 +9,6 @@
         android:id="@+id/ivDetailFirst"
         android:layout_width="match_parent"
         android:layout_height="220dp"
-        android:src="@drawable/rectangle_gray"/>
+        android:src="@drawable/rectangle_gray" />
 
 </FrameLayout>

@@ -1,5 +1,9 @@
 package com.example.jungeb.seoulapp.WebRequest;
 import android.content.ContentValues;
+
+import org.json.JSONArray;
+import org.json.JSONObject;
+
 import java.io.BufferedReader;
 import java.io.IOException;
 import java.io.InputStreamReader;
@@ -7,11 +11,11 @@ import java.io.OutputStream;
 import java.net.HttpURLConnection;
 import java.net.MalformedURLException;
 import java.net.URL;
+import java.util.HashMap;
 import java.util.Map;
 
 public class RequestHttpURLConnection {
-
-    public String request(String _url, ContentValues _params){
+    public String request(String _url, ContentValues _params){ //params DetailpageActivity에서 받아옴, url은 googlepa
 
         // HttpURLConnection 참조 변수.
         HttpURLConnection urlConn = null;
@@ -59,17 +63,20 @@ public class RequestHttpURLConnection {
             // [2-1]. urlConn 설정.
             urlConn.setRequestMethod("GET"); // URL 요청에 대한 메소드 설정 : POST.
             urlConn.setRequestProperty("Accept-Charset", "UTF-8"); // Accept-Charset 설정.
-            urlConn.setRequestProperty("Context_Type", "application/x-www-form-urlencoded;cahrset=UTF-8");
+            //urlConn.setRequestProperty("Context_Type", "application/x-www-form-urlencoded;cahrset=UTF-8");
 
-            // [2-2]. parameter 전달 및 데이터 읽어오기.
+            // [2-2]. parameter 전달 및 데이터 읽어오기. -> 주석은 POST방식, GET방식으로 해야됨
+            /*
             String strParams = sbParams.toString(); //sbParams에 정리한 파라미터들을 스트링으로 저장. 예)id=id1&pw=123;
             OutputStream os = urlConn.getOutputStream();
             os.write(strParams.getBytes("UTF-8")); // 출력 스트림에 출력.
             os.flush(); // 출력 스트림을 플러시(비운다)하고 버퍼링 된 모든 출력 바이트를 강제 실행.
-            os.close(); // 출력 스트림을 닫고 모든 시스템 자원을 해제.
+            os.close(); // 출력 스트림을 닫고 모든 시스템 자원을 해제.*/
 
+            //구글 PLACE 아이디로 장소에 대한 제목, 별점, 사진 3개, 리뷰 5개, 운영시간
             // [2-3]. 연결 요청 확인.
             // 실패 시 null을 리턴하고 메서드를 종료.
+
             if (urlConn.getResponseCode() != HttpURLConnection.HTTP_OK)
                 return null;
 
@@ -84,10 +91,12 @@ public class RequestHttpURLConnection {
             // 라인을 받아와 합친다.
             while ((line = reader.readLine()) != null){
                 page += line;
+            } //page는 가져온 json string
+            try {
+                return page;
+            } catch (Exception e) {
+                return "x";
             }
-
-            return page;
-
         } catch (MalformedURLException e) { // for URL.
             e.printStackTrace();
         } catch (IOException e) { // for openConnection().
@@ -96,9 +105,7 @@ public class RequestHttpURLConnection {
             if (urlConn != null)
                 urlConn.disconnect();
         }
-
         return null;
-
     }
 
 }

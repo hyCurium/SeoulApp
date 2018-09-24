@@ -64,15 +64,15 @@ public class GPSLocation extends Service implements LocationListener {
     public void onProviderDisabled(String provider) {
     }
 
-    private void fn_locationupdate(String provider){
+    private void fn_locationupdate(String provider){ //실제 위도 경도 호출 부분
         location = null;
         if (ActivityCompat.checkSelfPermission(this, Manifest.permission.ACCESS_FINE_LOCATION) != PackageManager.PERMISSION_GRANTED && ActivityCompat.checkSelfPermission(this, Manifest.permission.ACCESS_COARSE_LOCATION) != PackageManager.PERMISSION_GRANTED) {
             return;
         } //퍼미션 있는지 확인
-        locationManager.requestLocationUpdates(provider, 1000, 0, this);
+        locationManager.requestLocationUpdates(provider, 1000, 10, this);
         if (locationManager != null) {
             location = locationManager.getLastKnownLocation(provider);
-            if (location != null) {
+            if (location != null) { //로케이션 가져와서 브로드캐스트로 넘김
                 latitude = location.getLatitude();
                 longitude = location.getLongitude();
                 Log.e("latitude", location.getLatitude() + "");
@@ -84,15 +84,15 @@ public class GPSLocation extends Service implements LocationListener {
         }
     }
 
-    private void fn_getlocation() {
+    private void fn_getlocation() { //GPS 정보 가져오기
         locationManager = (LocationManager) getApplicationContext().getSystemService(LOCATION_SERVICE);
         isGPSEnable = locationManager.isProviderEnabled(LocationManager.GPS_PROVIDER); //network, gps 사용 여부 확인
         isNetworkEnable = locationManager.isProviderEnabled(LocationManager.NETWORK_PROVIDER);
         if (isNetworkEnable) {
-            fn_locationupdate(LocationManager.NETWORK_PROVIDER);
+            fn_locationupdate(LocationManager.NETWORK_PROVIDER); //NETWORK_PROVIDER 가능하면 가져오기
         }
         if (isGPSEnable){
-            fn_locationupdate(LocationManager.GPS_PROVIDER);
+            fn_locationupdate(LocationManager.GPS_PROVIDER);//GPS_PROVIDER 가능하면 가져오기
         }
     }
     private class TimerTaskToGetLocation extends TimerTask {
@@ -103,7 +103,7 @@ public class GPSLocation extends Service implements LocationListener {
                 public void run() {
                     fn_getlocation();
                 }
-            });
+            }); //타이머 시간 마다 GPS 정보 가져오는 함수 실행
 
         }
     }
