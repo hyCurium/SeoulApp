@@ -40,7 +40,7 @@
                     <ImageButton
                         android:layout_width="55dp"
                         android:layout_height="55dp"
-                        android:src="@drawable/subway_activation"
+                        android:src="@drawable/subway_disable"
                         android:scaleType="fitCenter"
                         android:background="#0fff"
                         android:id="@+id/ibtnSubwayIcon"/>
@@ -51,7 +51,7 @@
                         android:layout_marginTop="8dp"
                         android:text="지하철"
                         android:textSize="12dp"
-                        android:textColor="#5d38db"
+                        android:textColor="#929292"
                         android:gravity="center"
                         android:id="@+id/tvSubwayText"/>
 
@@ -148,7 +148,7 @@
                     <ImageButton
                         android:layout_width="55dp"
                         android:layout_height="55dp"
-                        android:src="@drawable/wc_disable"
+                        android:src="@drawable/wc_activation"
                         android:scaleType="fitCenter"
                         android:background="#0fff"
                         android:id="@+id/ibtnWCIcon"/>
@@ -159,7 +159,7 @@
                         android:layout_marginTop="8dp"
                         android:text="공중화장실"
                         android:textSize="12dp"
-                        android:textColor="#929292"
+                        android:textColor="#5d38db"
                         android:gravity="center"
                         android:id="@+id/tvWCIcon"/>
 
