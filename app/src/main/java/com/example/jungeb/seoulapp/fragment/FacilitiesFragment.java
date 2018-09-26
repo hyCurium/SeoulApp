@@ -30,6 +30,7 @@ import com.example.jungeb.seoulapp.Facilities.SeoulFacilities;
 import com.example.jungeb.seoulapp.Facilities.SeoulFacilitiesAsyncTask;
 import com.example.jungeb.seoulapp.Facilities.SeoulFacilitiesLocation;
 import com.example.jungeb.seoulapp.R;
+import com.opencsv.CSVReader;
 import com.skt.Tmap.TMapMarkerItem;
 import com.skt.Tmap.TMapPoint;
 import com.skt.Tmap.TMapView;
@@ -39,6 +40,10 @@ import org.json.JSONException;
 import org.json.JSONObject;
 import org.w3c.dom.Text;
 
+import java.io.FileNotFoundException;
+import java.io.FileReader;
+import java.io.IOException;
+import java.io.InputStreamReader;
 import java.util.ArrayList;
 import java.util.HashMap;
 
@@ -123,7 +128,7 @@ public class FacilitiesFragment extends Fragment {
         seoulFac.put("SERVICE", "MgisToilet");
         seoulFac.put("START_INDEX", "1");
         seoulFac.put("END_INDEX", "1000");
-        connectCheck(seoulFac, "MgisToilet","row");
+        connectCheck(seoulFac, "MgisToilet","row1");
 
 //        seoulFac2=new HashMap<String,String>();
 //        seoulFac2.put("SERVICE","MgisToilet");
@@ -153,6 +158,7 @@ public class FacilitiesFragment extends Fragment {
                 tvTaxiText.setTextColor(Color.parseColor("#929292"));
                 tvMedicineText.setTextColor(Color.parseColor("#929292"));
                 tvWCText.setTextColor(Color.parseColor("#929292"));
+                csvDataRead();
             }
         });
 
@@ -178,7 +184,7 @@ public class FacilitiesFragment extends Fragment {
                 seoulFacilitiesLocations.clear();
                 tMapView.removeAllMarkerItem();
 
-                connectCheck(newItem, newItem.get("SERVICE"),"RESULT");
+                connectCheck(newItem, newItem.get("SERVICE"),"RESULT2");
 
 
             }
@@ -205,7 +211,7 @@ public class FacilitiesFragment extends Fragment {
                 seoulFacilitiesLocations.clear();
                 tMapView.removeAllMarkerItem();
 
-                connectCheck(newItem, newItem.get("SERVICE"),"row");
+                connectCheck(newItem, newItem.get("SERVICE"),"row3");
             }
         });
 
@@ -229,7 +235,7 @@ public class FacilitiesFragment extends Fragment {
                 seoulFacilitiesLocations.clear();
                 tMapView.removeAllMarkerItem();
 
-                connectCheck(newItem, newItem.get("SERVICE"),"RESULT");
+                connectCheck(newItem, newItem.get("SERVICE"),"RESULT4");
             }
         });
 
@@ -253,7 +259,7 @@ public class FacilitiesFragment extends Fragment {
                 seoulFacilitiesLocations.clear();
                 tMapView.removeAllMarkerItem();
 
-                connectCheck(newItem, newItem.get("SERVICE"),"RESULT");
+                connectCheck(newItem, newItem.get("SERVICE"),"RESULT5");
 
             }
         });
@@ -294,7 +300,7 @@ public class FacilitiesFragment extends Fragment {
 
                     JSONObject temp = (JSONObject) locationTab1.get(setCnt);
                     SeoulFacilitiesLocation seoulFacilitiesLocationItem=new SeoulFacilitiesLocation();
-                    seoulFacilitiesLocationItem.setLon(Double.parseDouble(temp.get("" +lonType) + ""));
+                    seoulFacilitiesLocationItem.setLon(Double.parseDouble(temp.get("" +lonType)+""));
                     seoulFacilitiesLocationItem.setLat(Double.parseDouble(temp.get(""+latType)+""));
 
                     seoulFacilitiesLocations.add(seoulFacilitiesLocationItem);
@@ -307,7 +313,7 @@ public class FacilitiesFragment extends Fragment {
 
         Log.i("전체는?",""+seoulFacilitiesLocations.size());
 
-        markPoint();
+        markPoint(dataSet);
 
 
     }
@@ -418,10 +424,21 @@ public class FacilitiesFragment extends Fragment {
         }
     }
 
-    public void markPoint(){
+    public void markPoint(String dataSet){
         int tCount = 0;
         int tSize = seoulFacilitiesLocations.size();
-        bitmapCCTV = BitmapFactory.decodeResource(getActivity().getResources(), R.drawable.bus25);
+
+
+        if(dataSet.equals("busStopLocationXyInfo")){
+            bitmapCCTV = BitmapFactory.decodeResource(getActivity().getResources(), R.drawable.bus25);
+        }else if(dataSet.equals("MgisToilet")){
+            bitmapCCTV = BitmapFactory.decodeResource(getActivity().getResources(), R.drawable.wc_spot);
+        }else if(dataSet.equals("Mgistaxistop")){
+            bitmapCCTV = BitmapFactory.decodeResource(getActivity().getResources(), R.drawable.taxi_spot);
+        }else if(dataSet.equals("parmacyBizInfo")){
+            bitmapCCTV = BitmapFactory.decodeResource(getActivity().getResources(), R.drawable.medicine_spot);
+
+        }
 
         for(tCount=0;tCount<tSize;tCount++){
             TMapMarkerItem tempMarker = new TMapMarkerItem();
@@ -464,6 +481,20 @@ public class FacilitiesFragment extends Fragment {
 //            Log.i("잘찍었나봐", "" + tCount);
 //            Log.i("살펴볼께", "lat : " + tMapPointCCTV.getLatitude() + " lon : " + tMapPointCCTV.getLongitude());
 //            tMapPointCCTV = null;
+//        }
+//    }
+
+//    public void csvDataRead(){
+//        try {
+//            CSVReader reader=new CSVReader(new FileReader());
+//            String[] nextLine;
+//            while((nextLine=reader.readNext())!=null){
+//                System.out.println(nextLine[0]+nextLine[1]+"etc...");
+//            }
+//        } catch (FileNotFoundException e) {
+//            e.printStackTrace();
+//        } catch (IOException e) {
+//            e.printStackTrace();
 //        }
 //    }
 }

@@ -6,37 +6,38 @@
     tools:context=".fragment.TodayWeatherFragment">
 
     <ImageView
-        android:layout_width="100dp"
+        android:id="@+id/weather_image"
+        android:layout_width="80dp"
         android:layout_height="80dp"
-        android:layout_marginLeft="25dp"
+        android:layout_marginLeft="50dp"
+        android:layout_marginTop="15dp" />
+
+    <TextView
+        android:id="@+id/weather_now"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:textSize="65dp"
+        android:textColor="#2c2c2c"
         android:layout_marginTop="10dp"
-        android:src="@drawable/rectangle_gray"/>
+        android:layout_marginLeft="140dp"/>
 
     <TextView
+        android:id="@+id/weather_name"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="32"
-        android:textSize="70dp"
-        android:textColor="#000"
-        android:layout_marginLeft="135dp"/>
-
-    <TextView
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="흐림"
-        android:textColor="#383838"
+        android:textColor="#2c2c2c"
         android:textSize="18dp"
         android:layout_marginLeft="225dp"
-        android:layout_marginTop="50dp"/>
+        android:layout_marginTop="60dp"/>
 
     <TextView
+        android:id="@+id/weather_tmax"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="34.5"
         android:textColor="#9d9d9d"
         android:textSize="15dp"
         android:layout_marginLeft="225dp"
-        android:layout_marginTop="30dp"/>
+        android:layout_marginTop="40dp"/>
 
     <TextView
         android:layout_width="wrap_content"
@@ -45,38 +46,24 @@
         android:textColor="#9d9d9d"
         android:textSize="15dp"
         android:layout_marginLeft="260dp"
-        android:layout_marginTop="30dp"/>
+        android:layout_marginTop="40dp"/>
 
     <TextView
+        android:id="@+id/weather_tmin"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="20.3"
         android:textColor="#9d9d9d"
         android:textSize="15dp"
         android:layout_marginLeft="270dp"
-        android:layout_marginTop="30dp"/>
+        android:layout_marginTop="40dp"/>
 
     <TextView
-        android:layout_width="wrap_content"
+        android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:text="오늘날씨"
-        android:textColor="#383838"
-        android:textSize="15dp"
-        android:layout_marginLeft="320dp"
-        android:layout_marginTop="8dp"/>
-
-    <ImageView
-        android:layout_width="7dp"
-        android:layout_height="7dp"
-        android:src="@drawable/circle_purple"
-        android:layout_marginRight="5dp"
-        android:layout_gravity="center_horizontal|bottom"/>
-
-    <ImageView
-        android:layout_width="7dp"
-        android:layout_height="7dp"
-        android:src="@drawable/circle_gray"
-        android:layout_marginLeft="5dp"
-        android:layout_gravity="center_horizontal|bottom"/>
-
+        android:textColor="#9d9d9d"
+        android:textSize="13dp"
+        android:gravity="right"
+        android:layout_marginTop="9dp"
+        android:layout_marginRight="12dp"/>
 </FrameLayout>
